@@ -1,7 +1,7 @@
 CLASS zcl_04_vehicle DEFINITION
   PUBLIC
-  FINAL
   CREATE PUBLIC .
+
 
   PUBLIC SECTION.
 
@@ -11,7 +11,8 @@ CLASS zcl_04_vehicle DEFINITION
       constructor IMPORTING make TYPE string model TYPE string,
       set_speed_in_kmh IMPORTING speed_in_kmh TYPE i RAISING zcx_04_value_too_high,
       accelerate IMPORTING value TYPE i RAISING zcx_04_value_too_high,
-      brake IMPORTING value TYPE i raising zcx_04_value_too_high.
+      brake IMPORTING value TYPE i RAISING zcx_04_value_too_high,
+      to_String RETURNING VALUE(string) TYPE string.
 
 
     DATA make TYPE string READ-ONLY.
@@ -37,11 +38,11 @@ CLASS zcl_04_vehicle IMPLEMENTATION.
 
   METHOD set_speed_in_kmh.
 
-    if speed_in_kmh > 300.
+    IF speed_in_kmh > 300.
 
-        raise exception new zcx_04_value_too_high( value = speed_in_kmh ).
+      RAISE EXCEPTION NEW zcx_04_value_too_high( value = speed_in_kmh ).
 
-    endif.
+    ENDIF.
 
     me->speed_in_kmh = speed_in_kmh.
   ENDMETHOD.
@@ -49,13 +50,13 @@ CLASS zcl_04_vehicle IMPLEMENTATION.
   METHOD accelerate.
 
 
-    if value > speed_in_kmh.
+    IF value > speed_in_kmh.
 
-        raise exception new zcx_04_value_too_high( value = value ).
+      RAISE EXCEPTION NEW zcx_04_value_too_high( value = value ).
 
 
 
-    endif.
+    ENDIF.
 
     speed_in_kmh += value.
 
@@ -63,13 +64,13 @@ CLASS zcl_04_vehicle IMPLEMENTATION.
 
   METHOD brake.
 
-    if value > speed_in_kmh.
+    IF value > speed_in_kmh.
 
-        raise exception new zcx_04_value_too_high( value = value ).
+      RAISE EXCEPTION NEW zcx_04_value_too_high( value = value ).
 
 
 
-    endif.
+    ENDIF.
 
 
 
@@ -81,6 +82,12 @@ CLASS zcl_04_vehicle IMPLEMENTATION.
     me->make = make.
     me->model = model.
     number_of_created_vehicles += 1.
+
+  ENDMETHOD.
+
+  METHOD to_string.
+
+    string = |Make: { me->make }, Model: { me->model }, ({ me->speed_in_kmh }/kmh)|.
 
   ENDMETHOD.
 

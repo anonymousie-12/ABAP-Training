@@ -4,6 +4,7 @@ CLASS zcx_04_value_too_high DEFINITION
   FINAL
   CREATE PUBLIC .
 
+
   PUBLIC SECTION.
 
     INTERFACES if_t100_message .
