@@ -4,6 +4,7 @@ CLASS zcl_04_carrier DEFINITION
   CREATE PUBLIC .
 
   PUBLIC SECTION.
+    interfaces zif_04_partner.
     DATA name TYPE string READ-ONLY.
     DATA airplanes TYPE z04_airplanes READ-ONLY.
     METHODS get_biggest_cargo_plane
@@ -73,6 +74,10 @@ CLASS zcl_04_carrier IMPLEMENTATION.
 
 
 
+  ENDMETHOD.
+
+  METHOD zif_04_partner~to_string.
+    string = 'Ich bin die Fluggesellschaft'.
   ENDMETHOD.
 
 ENDCLASS.

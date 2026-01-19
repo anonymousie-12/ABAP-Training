@@ -5,7 +5,7 @@ CLASS zcl_04_truck DEFINITION
 
   PUBLIC SECTION.
     DATA cargo_in_tons TYPE i READ-ONLY.
-    DATA is_transformed TYPE c length 1.
+    DATA is_transformed TYPE c LENGTH 1.
 
     METHODS constructor
       IMPORTING make          TYPE string
@@ -30,8 +30,8 @@ CLASS zcl_04_truck IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD to_string.
-    string = super->to_string( ).
-    string &&= |, Cargo capacity: { cargo_in_tons }t|.
+
+    string = |Ich bin ein { COND #( WHEN is_transformed = 'X' THEN 'Autobot' ELSE 'LKW' ) }Make: { me->make }, Model: { me->model } Cargo capacity: { cargo_in_tons }t|.
   ENDMETHOD.
 
 

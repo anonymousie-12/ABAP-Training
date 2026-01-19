@@ -1,30 +1,13 @@
-CLASS zcl_04_abap_01 DEFINITION
-  PUBLIC
-  FINAL
-  CREATE PUBLIC .
+class ZCL_04_ABAP_01 definition
+  public
+  create private .
 
-  PUBLIC SECTION.
-
-    INTERFACES if_oo_adt_classrun .
-  PROTECTED SECTION.
-  PRIVATE SECTION.
+public section.
+protected section.
+private section.
 ENDCLASS.
 
 
 
-CLASS zcl_04_abap_01 IMPLEMENTATION.
-
-
-  METHOD if_oo_adt_classrun~main.
-
-  DATA first_name TYPE c LENGTH 40 VALUE 'Bruce'.
-
-  DATA last_name TYPE c LENGTH 40 VALUE 'Wayne'.
-
-
-  out->write( |Hello { first_name } { last_name }, how are you?| ).
-
-  ENDMETHOD.
-
-
+CLASS ZCL_04_ABAP_01 IMPLEMENTATION.
 ENDCLASS.

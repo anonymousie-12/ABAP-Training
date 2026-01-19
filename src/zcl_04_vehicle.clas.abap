@@ -1,5 +1,5 @@
 CLASS zcl_04_vehicle DEFINITION
-  PUBLIC
+  PUBLIC ABSTRACT
   CREATE PUBLIC .
 
 
@@ -10,9 +10,9 @@ CLASS zcl_04_vehicle DEFINITION
 
       constructor IMPORTING make TYPE string model TYPE string,
       set_speed_in_kmh IMPORTING speed_in_kmh TYPE i RAISING zcx_04_value_too_high,
-      accelerate IMPORTING value TYPE i RAISING zcx_04_value_too_high,
-      brake IMPORTING value TYPE i RAISING zcx_04_value_too_high,
-      to_String RETURNING VALUE(string) TYPE string.
+      accelerate FINAL IMPORTING value TYPE i RAISING zcx_04_value_too_high,
+      brake FINAL IMPORTING value TYPE i RAISING zcx_04_value_too_high,
+      to_String ABSTRACT RETURNING VALUE(string) TYPE string.
 
 
     DATA make TYPE string READ-ONLY.
@@ -85,10 +85,6 @@ CLASS zcl_04_vehicle IMPLEMENTATION.
 
   ENDMETHOD.
 
-  METHOD to_string.
 
-    string = |Make: { me->make }, Model: { me->model }, ({ me->speed_in_kmh }/kmh)|.
-
-  ENDMETHOD.
 
 ENDCLASS.

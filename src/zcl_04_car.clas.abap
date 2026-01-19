@@ -35,7 +35,7 @@ CLASS zcl_04_car IMPLEMENTATION.
 
   METHOD to_string.
 
-    string = | { super->to_string(  ) }, Seats: { seats }|.
+    string = | Make: { make }, Model: { model }, Seats: { seats }|.
 
   ENDMETHOD.
 
