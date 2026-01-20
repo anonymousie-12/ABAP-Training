@@ -1,0 +1,28 @@
+CLASS zcl_04_demo_09 DEFINITION
+  PUBLIC
+  FINAL
+  CREATE PUBLIC .
+
+  PUBLIC SECTION.
+  INTERFACES if_oo_adt_classrun.
+  PROTECTED SECTION.
+  PRIVATE SECTION.
+ENDCLASS.
+
+
+
+CLASS zcl_04_demo_09 IMPLEMENTATION.
+
+METHOD if_oo_adt_classrun~main.
+
+SELECT FROM Z04_Demo07(  P_Carrier_Id = 'LH', P_Deadline = @sy-datum )
+FIELDS *
+"WHERE CarrierID = 'LH'
+INTO TABLE @DATA(flights).
+
+
+ENDMETHOD.
+
+
+
+ENDCLASS.
