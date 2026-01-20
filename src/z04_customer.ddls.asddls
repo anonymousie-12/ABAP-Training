@@ -2,7 +2,9 @@
 @AccessControl.authorizationCheck: #NOT_REQUIRED
 @EndUserText.label: 'Exercise 2'
 @Metadata.ignorePropagatedAnnotations: true
-define view entity Z04_Customer as select from /dmo/customer 
+define view entity Z04_Customer
+
+ as select from /dmo/customer 
 {
 
   key customer_id as CustomerId,
@@ -16,3 +18,4 @@ define view entity Z04_Customer as select from /dmo/customer
   
   
 }
+
