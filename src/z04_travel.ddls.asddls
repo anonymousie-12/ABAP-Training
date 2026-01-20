@@ -3,6 +3,7 @@
 @EndUserText.label: 'Excercise 2'
 @Metadata.ignorePropagatedAnnotations: true
 define view entity Z04_Travel as select from /dmo/travel
+
 {
   key travel_id as TravelId,
   agency_id as AgencyId,
