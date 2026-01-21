@@ -1,0 +1,66 @@
+@Metadata.layer: #CUSTOMER
+
+
+
+
+
+@UI.headerInfo: {
+
+  typeNamePlural: 'Movies',
+  typeName: 'Movie',
+  title.value: 'Title',
+  description.value: 'PublishingYear',
+  imageUrl: 'ImageUrl'
+
+
+}
+
+
+annotate entity ZC_04_MovieTP with
+
+
+{
+
+  @UI.facet: [ { position:10, type: #FIELDGROUP_REFERENCE, targetQualifier: 'Details', label: 'Movie Details' },
+                 { position:20, type: #FIELDGROUP_REFERENCE, targetQualifier: 'Admin', label: 'Administrative Data' } ]
+
+
+
+  @UI.fieldGroup: [ { position: 10, qualifier: 'Admin' } ]
+  MovieUuid;
+
+
+  @UI.lineItem: [ { position: 10 } ]
+  @UI.fieldGroup: [ { position: 10, qualifier: 'Details' } ]
+  Title;
+
+  @UI.lineItem: [ { position: 20 } ]
+    @UI.selectionField: [ { position: 10 } ]
+  @UI.fieldGroup: [ { position: 10, qualifier: 'Details' } ]
+  Genre;
+
+  @UI.lineItem: [ { position: 30 } ]
+    @UI.selectionField: [ { position: 20 } ]
+  @UI.fieldGroup: [ { position: 10, qualifier: 'Details' } ]
+  PublishingYear;
+
+  @UI.lineItem: [ { position: 40 } ]
+    @UI.selectionField: [ { position: 30 } ]
+  @UI.fieldGroup: [ { position: 10, qualifier: 'Details' } ]
+  RuntimeInMin;
+
+
+@UI.lineItem: [ { position: 1, label: 'Poster' } ]
+@UI.fieldGroup: [ { position: 50, qualifier: 'Details' } ]
+  ImageUrl;
+
+  @UI.fieldGroup: [ { position: 20, qualifier: 'Admin' } ]
+  CreatedAt;
+  @UI.fieldGroup: [ { position: 30, qualifier: 'Admin' } ]
+  CreatedBy;
+  @UI.fieldGroup: [ { position: 40, qualifier: 'Admin' } ]
+  LastChangedAt;
+  @UI.fieldGroup: [ { position: 50, qualifier: 'Admin' } ]
+  LastChangedBy;
+
+}
