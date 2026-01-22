@@ -16,13 +16,20 @@
 }
 
 
+@UI.lineItem: [ { criticality: 'AverageRatingCriticality' } ]
+@UI.presentationVariant: [ { sortOrder: [{ by: 'AverageRating', direction: #DESC }] } ]
+
+
+
 annotate entity ZC_04_MovieTP with
 
 
 {
 
   @UI.facet: [ { position:10, type: #FIELDGROUP_REFERENCE, targetQualifier: 'Details', label: 'Movie Details' },
-                 { position:20, type: #FIELDGROUP_REFERENCE, targetQualifier: 'Admin', label: 'Administrative Data' } ]
+                 { position:20, type: #FIELDGROUP_REFERENCE, targetQualifier: 'Admin', label: 'Administrative Data' }, 
+                 { position: 30, type: #LINEITEM_REFERENCE, label: 'Ratings', targetElement: '_Ratings' }
+                 ]
 
 
 
@@ -40,7 +47,7 @@ annotate entity ZC_04_MovieTP with
   Genre;
 
   @UI.lineItem: [ { position: 30 } ]
-    @UI.selectionField: [ { position: 20 } ]
+   @UI.selectionField: [ { position: 20 } ]
   @UI.fieldGroup: [ { position: 10, qualifier: 'Details' } ]
   PublishingYear;
 
@@ -53,6 +60,15 @@ annotate entity ZC_04_MovieTP with
 @UI.lineItem: [ { position: 1, label: 'Poster' } ]
 @UI.fieldGroup: [ { position: 50, qualifier: 'Details' } ]
   ImageUrl;
+  
+  @UI.fieldGroup: [ { position: 999, qualifier: 'Details', criticality: 'AverageRatingCriticality', criticalityRepresentation: #WITHOUT_ICON } ]
+  @UI.lineItem: [ { position: 999, criticality: 'AverageRatingCriticality', criticalityRepresentation: #WITHOUT_ICON } ]
+  @UI.selectionField: [ { position: 40 } ]
+  @UI.dataPoint: { criticality: 'AverageRatingCriticality' }
+  AverageRating;
+  
+  @UI.hidden: true
+  AverageRatingCriticality;
 
   @UI.fieldGroup: [ { position: 20, qualifier: 'Admin' } ]
   CreatedAt;
@@ -62,5 +78,7 @@ annotate entity ZC_04_MovieTP with
   LastChangedAt;
   @UI.fieldGroup: [ { position: 50, qualifier: 'Admin' } ]
   LastChangedBy;
+  
+  
 
 }

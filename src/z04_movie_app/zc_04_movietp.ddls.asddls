@@ -3,19 +3,34 @@
 @EndUserText.label: 'Movie'
 @Metadata.allowExtensions: true
 @Search.searchable: true
-define view entity ZC_04_MovieTP as select from ZR_04_MovieTP
+define root view entity ZC_04_MovieTP
+  provider contract transactional_query as projection on ZR_04_MovieTP
+
+
 {
   key MovieUuid,
   @Search.defaultSearchElement: true
   @Search.fuzzinessThreshold: 0.7
   Title,
+  @ObjectModel.text.element: [ 'GenreText' ]
   Genre,
   PublishingYear,
   RuntimeInMin,
-    @Semantics.imageUrl: true
+ 
   ImageUrl,
   CreatedAt,
   CreatedBy,
   LastChangedAt,
-  LastChangedBy
+  LastChangedBy,
+  
+  //Transient Data
+  _AverageRating.AverageRating,
+  _AverageRating.AverageRatingCriticality,
+  _GenreText.GenreText,
+ 
+  
+   _Ratings: redirected to composition child ZC_04_RatingTP
+   
+
 }
+

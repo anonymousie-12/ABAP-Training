@@ -1,7 +1,6 @@
 @AbapCatalog.viewEnhancementCategory: [#NONE]
 @AccessControl.authorizationCheck: #NOT_REQUIRED
 @EndUserText.label: 'Movie'
-@Metadata.ignorePropagatedAnnotations: true
 define view entity ZI_04_Movie as select from zabap_movie_a
 {
   key movie_uuid as MovieUuid,
@@ -9,7 +8,7 @@ define view entity ZI_04_Movie as select from zabap_movie_a
   genre as Genre,
   publishing_year as PublishingYear,
   runtime_in_min as RuntimeInMin,
-  @Semantics.imageURL: true
+ @Semantics.imageUrl: true
   image_url as ImageUrl,
   created_at as CreatedAt,
   created_by as CreatedBy,
