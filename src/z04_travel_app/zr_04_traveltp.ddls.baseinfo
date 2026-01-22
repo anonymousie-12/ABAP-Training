@@ -3,10 +3,13 @@
 {
 "FROM":
 [
+"ZI_04_CUSTOMERTEXT",
 "ZI_04_TRAVEL"
 ],
 "ASSOCIATED":
-[],
+[
+"ZR_04_BOOKINGTP"
+],
 "BASE":
 [],
 "ANNO_REF":

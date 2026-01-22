@@ -7,8 +7,12 @@
 @Search.searchable: true
 
 @Metadata.allowExtensions: true
-define view entity ZC_04_TravelTP
-  as select from ZR_04_TravelTP
+define root view entity ZC_04_TravelTP
+  provider contract transactional_query
+  as projection on ZR_04_TravelTP
+  
+ 
+  
 {
   key TravelId,
       AgencyId,
@@ -27,5 +31,11 @@ define view entity ZC_04_TravelTP
       CreatedBy,
       CreatedAt,
       LastChangedBy,
-      LastChangedAt
+      LastChangedAt,
+      
+      //Transient Data
+      StatusCriticality,
+      CustomerName,
+      
+      _Bookings: redirected to composition child ZC_04_BookingTP
 }
